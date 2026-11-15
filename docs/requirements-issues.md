@@ -109,49 +109,49 @@ These drafts map to the Must and Should requirements in `docs/srs.md`. Create on
 
 ## NFR-01 Event-page performance
 
-- Label: `test` · Milestone: `CA submission`
+- Label: `Test` · Milestone: `CA submission`
 - User story: As an attendee, I want event pages to load quickly so that I can register without delay.
 - Given a load test with up to 50 concurrent users, when 100 event-list and event-detail requests run, then at least 95% complete within 3 seconds.
 - Given the load test completes, when results are reviewed, then the report records concurrency and response times for the requests.
 
 ## NFR-02 Check-in response time
 
-- Label: `test` · Milestone: `CA submission`
+- Label: `Test` · Milestone: `CA submission`
 - User story: As check-in staff, I want ticket validation to respond quickly so that attendees do not wait in a long queue.
 - Given up to 20 concurrent check-in requests, when 100 validations run, then at least 95% return within 2 seconds.
 - Given a validation exceeds 2 seconds, when the test report is produced, then the slow response is counted and reported.
 
 ## NFR-03 Mobile layout
 
-- Label: `test` · Milestone: `CA submission`
+- Label: `Test` · Milestone: `CA submission`
 - User story: As an attendee or check-in staff member, I want the system to work on a narrow phone screen so that I can use it at the venue.
 - Given a 360 CSS-pixel viewport, when the registration, ticket and check-in screens open, then no horizontal page scrolling is required.
 - Given the viewport remains 360 CSS pixels, when the user completes registration or check-in, then all required controls remain visible and operable.
 
 ## NFR-04 Role-based security
 
-- Label: `test` · Milestone: `CA submission`
+- Label: `Test` · Milestone: `CA submission`
 - User story: As an organizer, I want restricted actions protected by role checks so that attendee and event data cannot be changed by unauthorized users.
 - Given an attendee account requests an organizer-only action, when the request reaches the system, then the system denies it and leaves data unchanged.
 - Given a check-in staff account requests payment editing or reporting, when the request is processed, then the system denies access.
 
 ## NFR-05 Check-in usability
 
-- Label: `test` · Milestone: `v1.0`
+- Label: `Test` · Milestone: `v1.0`
 - User story: As check-in staff, I want the check-in flow to be quick and clear so that I can process attendees at the entrance.
 - Given five trained staff members test valid tickets on a phone-sized screen, when each completes the check-in flow, then at least four finish within 10 seconds.
 - Given the same test, when staff submit an invalid or previously used ticket, then the result clearly states why it was rejected.
 
 ## NFR-06 Check-in availability
 
-- Label: `test` · Milestone: `v1.0`
+- Label: `Test` · Milestone: `v1.0`
 - User story: As an organizer, I want the check-in service available during the event so that staff can verify tickets.
 - Given a published four-hour check-in window, when service availability is monitored, then the service is available for at least 99% of that window.
 - Given the service becomes unavailable during the window, when the incident is reviewed, then its duration is included in the availability calculation.
 
 ## NFR-07 Attendee privacy
 
-- Label: `test` · Milestone: `v1.0`
+- Label: `Test` · Milestone: `v1.0`
 - User story: As an attendee, I want my contact details hidden from public visitors and unnecessary staff roles so that my information is protected.
 - Given a public visitor opens an event page, when the page loads, then no attendee contact details are displayed.
 - Given a check-in staff account views a ticket, when attendee details appear, then contact details and payment information are hidden.
