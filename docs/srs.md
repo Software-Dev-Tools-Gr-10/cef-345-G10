@@ -11,11 +11,11 @@ Status: Working draft for client and group review
 
 ### Purpose
 
-This specification describes the requirements for an Event Ticketing and Check-in System for a church or student association that organises events. It gives the group a shared description of the system to design, build and test.
+This SRS sets out what the group plans to build for a church or student association that runs events. It gives the group one description to use while designing, building and testing the Event Ticketing and Check-in System.
 
 ### Scope
 
-The system will support event publishing, attendee registration, ticket creation and validation, check-in, payment-status records, event updates and attendance reporting. It is intended to provide organisers with one reliable event registration record and to reduce ticket reuse and inaccurate attendance counts.
+The system will let organisers publish events, manage registrations, issue and check tickets, record payment status, post event updates and review attendance. The aim is to keep event records together and reduce reused tickets and inaccurate attendance counts.
 
 ### Definitions
 
@@ -31,7 +31,7 @@ The system will support event publishing, attendee registration, ticket creation
 
 ### Product perspective
 
-The product is a web application for event organisers, attendees, check-in staff (Protocol) and a system administrator. Attendees use it to view events, register and access tickets. Organisers manage events and registrations. Check-in staff validate tickets and record attendance. The system administrator manages user access and roles.
+People will use the web application on a phone or computer. Attendees can browse events, register and view their tickets. Organisers manage events and registrations. Check-in staff (Protocol) check tickets at the entrance and record attendance. The system administrator manages user access and roles.
 
 ### Stakeholders and users
 
@@ -46,7 +46,7 @@ The product is a web application for event organisers, attendees, check-in staff
 
 ### Operating environment
 
-The system will be accessed through a web browser on a computer or phone. The expected venue workflow requires an internet connection for online ticket validation. Offline check-in is not included in this draft.
+Users will open the system in a browser on a computer or phone. Ticket checks at the venue need an internet connection in this draft; offline check-in is not included.
 
 ### Constraints
 
@@ -57,11 +57,11 @@ The system will be accessed through a web browser on a computer or phone. The ex
 
 ### Assumptions and questions to confirm
 
-- The assigned client may be a church or a student association; the specific organisation and its current process have not yet been named in this draft.
-- Payment tracking means an organizer records payment status manually. Online payment processing is not assumed.
-- The draft allows an event to be free (price set to zero) or paid (positive price). The client must confirm whether both options are used and whether payment is required before a ticket is issued or accepted at check-in.
-- A ticket is displayed on a confirmation page after registration. Email or SMS delivery is not assumed until the client selects a delivery channel.
-- Each registration is for one attendee. Group registration and ticket transfers are excluded unless the client requests them.
+- The client may be a church or student association. The group still needs to confirm which organisation and process the system will support.
+- For now, an organizer records payment status by hand. The system will not process payments unless the client asks for that and the group agrees to include it.
+- An event can be free (price zero) or paid (a positive price). The client still needs to confirm whether both types are used and whether payment is required before a ticket is issued or accepted at the door.
+- After registering, an attendee sees the ticket on a confirmation page. Email or SMS delivery can be added if the client chooses a channel.
+- Each registration covers one attendee. Group registrations and ticket transfers are out of scope unless the client asks for them.
 - The client must confirm whether a trimmed, case-insensitive contact value is a suitable duplicate-registration rule, which payment states are needed, and who can publish event changes.
 - The response-time, concurrent-user, usability and availability values are proposed targets; the group must confirm they fit the client and the available hosting and test setup.
 - The group should validate these assumptions using field notes and a discussion with an event organiser before approving the SRS.
@@ -103,7 +103,7 @@ The system will be accessed through a web browser on a computer or phone. The ex
 
 ### Use case diagram
 
-The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. The current diagram shows Attendee, Organizer and Check-in staff. Update it to include the System administrator and the user-access management use case before the group approves the SRS.
+The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. It currently shows Attendee, Organizer and Check-in staff. Before approving the SRS, add the System administrator and the user-access management use case.
 
 ### UC-01 Create and publish an event
 
