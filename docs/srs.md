@@ -31,17 +31,18 @@ The system will support event publishing, attendee registration, ticket creation
 
 ### Product perspective
 
-The product is a web application for event organisers, attendees and check-in staff. Attendees use it to view events, register and access tickets. Organisers manage events and registrations. Check-in staff validate tickets and record attendance.
+The product is a web application for event organisers, attendees, check-in staff (Protocol) and a system administrator. Attendees use it to view events, register and access tickets. Organisers manage events and registrations. Check-in staff validate tickets and record attendance. The system administrator manages user access and roles.
 
 ### Stakeholders and users
 
 | Stakeholder or user | Main interest |
 |---|---|
-| Church or student association leadership | Accurate event registration, payment and attendance information. |
+| Church or student association leadership | A well-organised event with accurate attendance records. |
 | Event organizer | Create events, set a ticket price or mark an event free, manage attendees, record payments, communicate changes and review reports. |
 | Attendee | See whether an event is free or paid and its price before registering, then access a valid ticket. |
-| Check-in staff | Verify tickets quickly and avoid duplicate entry. |
-| Development group | Build and maintain the system within the course project constraints. |
+| Check-in staff (Protocol) | Verify attendee tickets, record who has entered and identify tickets that cannot be accepted. |
+| System administrator | Keep the system working and make sure users have the correct access. |
+| Development group | Build and maintain the system and resolve reported problems within the course project constraints. |
 
 ### Operating environment
 
@@ -83,7 +84,7 @@ The system will be accessed through a web browser on a computer or phone. The ex
 | FR-12 | Must | After a valid ticket is accepted, the system shall record the check-in time and the staff account that performed the check-in. |
 | FR-13 | Should | The system shall let an organizer publish an event update that is visible to attendees registered for that event. |
 | FR-14 | Should | The system shall show an organizer, for a selected event, the registration count, paid-registration count, total amount recorded as paid and checked-in count. |
-| FR-15 | Must | The system shall let an authorized organizer assign and remove the Organizer and Check-in staff roles for user accounts. |
+| FR-15 | Must | The system shall let an authorized system administrator assign and remove the Organizer and Check-in staff roles for user accounts. |
 | FR-16 | Could | The system may let an organizer export an event's attendee and attendance report as a CSV file. |
 
 ## 4. Non-functional requirements
@@ -102,7 +103,7 @@ The system will be accessed through a web browser on a computer or phone. The ex
 
 ### Use case diagram
 
-The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. It shows the actors Attendee, Organizer and Check-in staff, the system boundary and the main use cases. The designer should review it against the client process before the group approves the SRS.
+The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. The current diagram shows Attendee, Organizer and Check-in staff. Update it to include the System administrator and the user-access management use case before the group approves the SRS.
 
 ### UC-01 Create and publish an event
 
@@ -139,6 +140,18 @@ The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. It 
 | Alternative flows | 2a. The ticket does not exist or belongs to another event: the system rejects it and explains the reason. 3a. The ticket was already used: the system rejects a second check-in and shows the previous check-in status. 1a. The staff member is not authorized: the system denies the action and records the failed attempt. |
 | Postconditions | A valid ticket has one check-in record. Invalid or previously used tickets remain unchanged. |
 | Requirements covered | FR-10, FR-11, FR-12, NFR-02, NFR-04, NFR-07 |
+
+### UC-04 Manage user access
+
+| Field | Description |
+|---|---|
+| Primary actor | System administrator |
+| Preconditions | The administrator is signed in and has the System administrator role. |
+| Trigger | The administrator chooses to update a user's access. |
+| Main flow | 1. The administrator selects a user account. 2. The system displays the account's current Organizer and Check-in staff roles. 3. The administrator assigns or removes one or both roles. 4. The system checks that the administrator is authorized and saves the role changes. 5. The system confirms the updated access. |
+| Alternative flows | 4a. The administrator is not authorized: the system denies the change and leaves the account's roles unchanged. |
+| Postconditions | The user account has the roles selected by the authorized administrator. |
+| Requirements covered | FR-15, NFR-04 |
 
 ## 6. Priorities
 
