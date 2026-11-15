@@ -65,6 +65,7 @@ Users will open the system in a browser on a computer or phone. Ticket checks at
 - The client must confirm whether a trimmed, case-insensitive contact value is a suitable duplicate-registration rule, which payment states are needed, and who can publish event changes.
 - The response-time, concurrent-user, usability and availability values are proposed targets; the group must confirm they fit the client and the available hosting and test setup.
 - The group should validate these assumptions using field notes and a discussion with an event organiser before approving the SRS.
+- One event-organiser questionnaire response dated 15 November 2026 asks for more reliable reports from past events, but gives no examples or figures and answers "None for now" about how many events are organised and typical attendance. Confirm the organisation and report needs before treating this as a settled client requirement; see `docs/field-notes/Luma-field-notes.md`.
 
 ## 3. Functional requirements
 
@@ -83,7 +84,7 @@ Users will open the system in a browser on a computer or phone. Ticket checks at
 | FR-11 | Must | The system shall reject a ticket that does not exist, belongs to another event, or has already been checked in, and shall show the reason. |
 | FR-12 | Must | After a valid ticket is accepted, the system shall record the check-in time and the staff account that performed the check-in. |
 | FR-13 | Should | The system shall let an organizer publish an event update that is visible to attendees registered for that event. |
-| FR-14 | Should | The system shall show an organizer, for a selected event, the registration count, paid-registration count, total amount recorded as paid and checked-in count. |
+| FR-14 | Should | The system shall let an organizer view an attendance and payment report for a selected event, including past events. The report shall show the registration count, paid-registration count, total amount recorded as paid and checked-in count. |
 | FR-15 | Must | The system shall let an authorized system administrator assign and remove the Organizer and Check-in staff roles for user accounts. |
 | FR-16 | Could | The system may let an organizer export an event's attendee and attendance report as a CSV file. |
 
