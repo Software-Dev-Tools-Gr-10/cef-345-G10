@@ -1,0 +1,174 @@
+# Software Requirements Specification
+
+## Event Ticketing and Check-in System
+
+Prepared by: Luma Chrisparr Ngale Jomia  
+Matricule: FE25A114  
+Role: Analysis Lead  
+Status: Working draft for client and group review
+
+## 1. Introduction
+
+### Purpose
+
+This SRS sets out what the group plans to build for a church or student association that runs events. It gives the group one description to use while designing, building and testing the Event Ticketing and Check-in System.
+
+### Scope
+
+The system will let organisers publish events, manage registrations, issue and check tickets, record payment status, post event updates and review attendance. The aim is to keep event records together and reduce reused tickets and inaccurate attendance counts.
+
+### Definitions
+
+| Term | Meaning |
+|---|---|
+| Attendee | A person who registers for an event. |
+| Organizer | An authorised user who creates and manages events. |
+| Check-in staff | An authorised user who validates tickets at an event entrance. |
+| Ticket | A unique record linked to one attendee registration and one event. |
+| Check-in | Recording that an attendee with a valid ticket has arrived. |
+
+## 2. Overall description
+
+### Product perspective
+
+People will use the web application on a phone or computer. Attendees can browse events, register and view their tickets. Organisers manage events and registrations. Check-in staff (Protocol) check tickets at the entrance and record attendance. The system administrator manages user access and roles.
+
+### Stakeholders and users
+
+| Stakeholder or user | Main interest |
+|---|---|
+| Church or student association leadership | A well-organised event with accurate attendance records. |
+| Event organizer | Create events, set a ticket price or mark an event free, manage attendees, record payments, communicate changes and review reports. |
+| Attendee | See whether an event is free or paid and its price before registering, then access a valid ticket. |
+| Check-in staff (Protocol) | Verify attendee tickets, record who has entered and identify tickets that cannot be accepted. |
+| System administrator | Keep the system working and make sure users have the correct access. |
+| Development group | Build and maintain the system and resolve reported problems within the course project constraints. |
+
+### Operating environment
+
+Users will open the system in a browser on a computer or phone. Ticket checks at the venue need an internet connection in this draft; offline check-in is not included.
+
+### Constraints
+
+- The system must support a phone browser with a viewport as narrow as 360 CSS pixels.
+- Event access and check-in actions must be restricted by user role.
+- Each successful registration must have one unique ticket for one event.
+- The course implementation technology and deployment host remain to be confirmed by the group.
+
+### Assumptions and questions to confirm
+
+- The client may be a church or student association. The group still needs to confirm which organisation and process the system will support.
+- For now, an organizer records payment status by hand. The system will not process payments unless the client asks for that and the group agrees to include it.
+- An event can be free (price zero) or paid (a positive price). The client still needs to confirm whether both types are used and whether payment is required before a ticket is issued or accepted at the door.
+- After registering, an attendee sees the ticket on a confirmation page. Email or SMS delivery can be added if the client chooses a channel.
+- Each registration covers one attendee. Group registrations and ticket transfers are out of scope unless the client asks for them.
+- The client must confirm whether a trimmed, case-insensitive contact value is a suitable duplicate-registration rule, which payment states are needed, and who can publish event changes.
+- The response-time, concurrent-user, usability and availability values are proposed targets; the group must confirm they fit the client and the available hosting and test setup.
+- The group should validate these assumptions using field notes and a discussion with an event organiser before approving the SRS.
+
+## 3. Functional requirements
+
+| ID | Priority | Requirement |
+|---|---|---|
+| FR-01 | Must | The system shall let an organizer create a draft event with a title, description, venue, start and end time, capacity, registration deadline and ticket price. |
+| FR-02 | Must | The system shall let an organizer publish, update, close or cancel an event. Only published events with valid required details shall accept registrations. |
+| FR-03 | Must | The system shall let a visitor view published event details, registration status and remaining capacity. |
+| FR-04 | Must | The system shall let an attendee register one person for an open event by providing a name and at least one contact method. |
+| FR-05 | Must | The system shall reject a registration if the event is unpublished, closed, past its deadline, at capacity, or already has a registration for that event with the same contact value after leading and trailing spaces are removed and letters are converted to lowercase. |
+| FR-06 | Must | After a registration succeeds, the system shall create a ticket with a unique ticket identifier linked to that attendee and event. |
+| FR-07 | Must | The system shall let an attendee view the ticket identifier, event details and ticket status on a confirmation page. |
+| FR-08 | Must | The system shall let an organizer view and search an event's attendee list by attendee name or contact value. |
+| FR-09 | Should | The system shall let an authorized organizer record whether a registration is unpaid or paid, the amount received, payment method and date recorded. |
+| FR-10 | Must | The system shall let authorized check-in staff validate a ticket identifier against the selected event. |
+| FR-11 | Must | The system shall reject a ticket that does not exist, belongs to another event, or has already been checked in, and shall show the reason. |
+| FR-12 | Must | After a valid ticket is accepted, the system shall record the check-in time and the staff account that performed the check-in. |
+| FR-13 | Should | The system shall let an organizer publish an event update that is visible to attendees registered for that event. |
+| FR-14 | Should | The system shall show an organizer, for a selected event, the registration count, paid-registration count, total amount recorded as paid and checked-in count. |
+| FR-15 | Must | The system shall let an authorized system administrator assign and remove the Organizer and Check-in staff roles for user accounts. |
+| FR-16 | Could | The system may let an organizer export an event's attendee and attendance report as a CSV file. |
+
+## 4. Non-functional requirements
+
+| ID | Priority | Requirement |
+|---|---|---|
+| NFR-01 | Must | With up to 50 concurrent users, 95% of event-list and event-detail requests shall complete within 3 seconds, measured in the group's agreed test environment. |
+| NFR-02 | Must | With up to 20 concurrent check-in requests, 95% of ticket validations shall return a result within 2 seconds, measured in the group's agreed test environment. |
+| NFR-03 | Must | Attendee registration, ticket display and check-in screens shall be usable at a 360 CSS-pixel viewport width without horizontal scrolling. |
+| NFR-04 | Must | A user without the required role shall be denied event-management, payment-recording, reporting and check-in actions; automated tests shall verify each denied action. |
+| NFR-05 | Should | In a usability test with five trained check-in staff, at least four shall complete a valid ticket check-in in 10 seconds or less using a phone-sized screen. |
+| NFR-06 | Should | During a published event's scheduled check-in window, the deployed service shall be available at least 99% of the time, measured over that window. |
+| NFR-07 | Should | Contact details shall not be visible to public event visitors; check-in staff shall see only the attendee information needed to identify the ticket holder. |
+
+## 5. Use case diagram and descriptions
+
+### Use case diagram
+
+The editable UML use case diagram is at `docs/diagrams/usecases.drawio.svg`. It currently shows Attendee, Organizer and Check-in staff. Before approving the SRS, add the System administrator and the user-access management use case.
+
+### UC-01 Create and publish an event
+
+| Field | Description |
+|---|---|
+| Primary actor | Organizer |
+| Preconditions | The organizer is signed in and has the Organizer role. |
+| Trigger | The organizer chooses to create an event. |
+| Main flow | 1. The organizer enters the event title, description, venue, start and end time, capacity, registration deadline and ticket price. 2. The system checks that required values are present, the end time follows the start time, capacity is positive and ticket price is not negative. 3. The organizer saves the event as a draft. 4. The organizer chooses Publish. 5. The system marks the event as published and makes it visible to visitors. |
+| Alternative flows | 2a. One or more values are invalid: the system identifies the fields to correct and does not save the invalid event. 4a. Required details are missing: the system keeps the event as a draft and explains what is missing. |
+| Postconditions | A valid event is saved. If published, it is visible to visitors and can accept registrations until closed, full or past its registration deadline. |
+| Requirements covered | FR-01, FR-02, FR-03 |
+
+### UC-02 Register for an event and receive a ticket
+
+| Field | Description |
+|---|---|
+| Primary actor | Attendee |
+| Preconditions | The event is published, registration is open and capacity remains. |
+| Trigger | The attendee chooses Register for an event. |
+| Main flow | 1. The system displays the event details and registration form. 2. The attendee enters their name and at least one contact method. 3. The attendee submits the form. 4. The system checks event status, deadline, capacity and duplicate contact information. 5. The system saves the registration and creates a unique ticket identifier. 6. The system displays a confirmation page with the ticket identifier, event details and ticket status. |
+| Alternative flows | 4a. The event is closed, full or past the deadline: the system refuses registration and explains why. 4b. The contact value already has a registration for the event: the system refuses the duplicate and explains how to find the existing ticket. 5a. Registration cannot be saved: the system does not issue a ticket and displays an error. |
+| Postconditions | On success, one attendee registration and one unique ticket exist for the event. On failure, no ticket is issued. |
+| Requirements covered | FR-03, FR-04, FR-05, FR-06, FR-07 |
+
+### UC-03 Validate a ticket and check in an attendee
+
+| Field | Description |
+|---|---|
+| Primary actor | Check-in staff |
+| Preconditions | The staff member is signed in with the Check-in staff role, and the event is selected. |
+| Trigger | The staff member scans or enters a ticket identifier. |
+| Main flow | 1. The staff member submits the ticket identifier. 2. The system checks that the ticket exists and belongs to the selected event. 3. The system checks that the ticket has not already been used. 4. The system shows a valid result and the minimum attendee details needed for identification. 5. The system records the check-in time and staff account. 6. The system shows confirmation. |
+| Alternative flows | 2a. The ticket does not exist or belongs to another event: the system rejects it and explains the reason. 3a. The ticket was already used: the system rejects a second check-in and shows the previous check-in status. 1a. The staff member is not authorized: the system denies the action and records the failed attempt. |
+| Postconditions | A valid ticket has one check-in record. Invalid or previously used tickets remain unchanged. |
+| Requirements covered | FR-10, FR-11, FR-12, NFR-02, NFR-04, NFR-07 |
+
+### UC-04 Manage user access
+
+| Field | Description |
+|---|---|
+| Primary actor | System administrator |
+| Preconditions | The administrator is signed in and has the System administrator role. |
+| Trigger | The administrator chooses to update a user's access. |
+| Main flow | 1. The administrator selects a user account. 2. The system displays the account's current Organizer and Check-in staff roles. 3. The administrator assigns or removes one or both roles. 4. The system checks that the administrator is authorized and saves the role changes. 5. The system confirms the updated access. |
+| Alternative flows | 4a. The administrator is not authorized: the system denies the change and leaves the account's roles unchanged. |
+| Postconditions | The user account has the roles selected by the authorized administrator. |
+| Requirements covered | FR-15, NFR-04 |
+
+## 6. Priorities
+
+| Priority | Requirements | Reason |
+|---|---|---|
+| Must have | FR-01–FR-08, FR-10–FR-12, FR-15, NFR-01–NFR-04 | The system cannot manage event registrations and prevent unreliable or duplicate check-ins without these requirements. |
+| Should have | FR-09, FR-13, FR-14, NFR-05–NFR-07 | Payment records, attendee updates, reports and additional quality targets address important client problems, with manual workarounds available. |
+| Could have | FR-16 | CSV export is useful but can be deferred if the organizer can review the on-screen report. |
+| Won't have this time | Online payment processing, SMS/WhatsApp delivery, ticket transfers and offline check-in | These items need additional services or rules not established in the current project brief. |
+
+Every Must and Should requirement needs a GitHub issue with a user story, at least two Given/When/Then acceptance criteria, an appropriate label and a CA submission or v1.0 milestone.
+
+## 7. Out of scope
+
+- Processing card or mobile-money payments inside the system. The first version records payment status entered by an organizer.
+- Sending SMS or WhatsApp messages. The first version displays event updates in the system.
+- Transferring, reselling or refunding tickets.
+- Offline ticket validation when the venue has no internet connection.
+- Seat selection, transport booking, accommodation and event programme management.
+
