@@ -1,6 +1,6 @@
 # Event registration and check-in field notes
 
-- Observer/interviewer: Tabe Miracle Fiagmenyi
+- interviewer: Tabe Miracle Fiagmenyi
 - Matricule: FE25A199
 
 ## Visit details
@@ -22,7 +22,7 @@
 
 ## Observation log
 
-| Time | What the organiser did or said | Record, tool or information used | Problem, exception or workaround | Evidence (observed or reported) |
+| Time | What the organiser did or said | Record, tool or information used | Problem, exception or workaround | Evidence  |
 |---|---|---|---|---|
 | 0:05 | Said guests register by phone call or WhatsApp message and she writes each name in a notebook | Paper notebook | Names are sometimes misspelt or written twice | Reported |
 | 0:20 | Showed the sales list; payments are mostly mobile money, confirmed by checking her phone messages | Phone messages, notebook | She matches each payment to a name by hand; some payments cannot be matched to a person | Observed |
