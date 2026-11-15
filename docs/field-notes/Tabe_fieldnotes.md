@@ -9,7 +9,7 @@
 - Person's role in organization: Event organiser
 - Permission to take notes confirmed: Yes
 
-## Open questions
+## Questions
 
 1. Please walk me through the most recent event you organised, from planning until people arrived.
 2. How did people register, and where did you keep the list?
@@ -20,7 +20,7 @@
 7. What report or attendance information did you need after the event?
 8. What is the most difficult or time-consuming part of this process?
 
-## Observation log
+## Observations
 
 | Time | What the organiser did or said | Record, tool or information used | Problem, exception or workaround | Evidence  |
 |---|---|---|---|---|
