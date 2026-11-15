@@ -38,8 +38,8 @@ The product is a web application for event organisers, attendees and check-in st
 | Stakeholder or user | Main interest |
 |---|---|
 | Church or student association leadership | Accurate event registration, payment and attendance information. |
-| Event organizer | Create events, manage attendees, communicate changes and review reports. |
-| Attendee | Find event details, register and access a valid ticket. |
+| Event organizer | Create events, set a ticket price or mark an event free, manage attendees, record payments, communicate changes and review reports. |
+| Attendee | See whether an event is free or paid and its price before registering, then access a valid ticket. |
 | Check-in staff | Verify tickets quickly and avoid duplicate entry. |
 | Development group | Build and maintain the system within the course project constraints. |
 
@@ -58,6 +58,7 @@ The system will be accessed through a web browser on a computer or phone. The ex
 
 - The assigned client may be a church or a student association; the specific organisation and its current process have not yet been named in this draft.
 - Payment tracking means an organizer records payment status manually. Online payment processing is not assumed.
+- The draft allows an event to be free (price set to zero) or paid (positive price). The client must confirm whether both options are used and whether payment is required before a ticket is issued or accepted at check-in.
 - A ticket is displayed on a confirmation page after registration. Email or SMS delivery is not assumed until the client selects a delivery channel.
 - Each registration is for one attendee. Group registration and ticket transfers are excluded unless the client requests them.
 - The client must confirm whether a trimmed, case-insensitive contact value is a suitable duplicate-registration rule, which payment states are needed, and who can publish event changes.
