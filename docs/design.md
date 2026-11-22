@@ -9,11 +9,13 @@ Status: Group design draft based on the confirmed SRS
 
 This document turns the confirmed requirements in [`srs.md`](srs.md) into a design the group can build and review. The diagrams below use Mermaid so they can be viewed in GitHub and edited as text. The architecture diagram is also provided as an SVG at [`diagrams/architecture.drawio.svg`](diagrams/architecture.drawio.svg).
 
-Luma's Week 5 individual deliverables are [`schema.sql`](../schema.sql) and an editable ERD at [`diagrams/Luma-event-ticketing-erd.drawio`](diagrams/Luma-event-ticketing-erd.drawio) with its SVG preview. The Week 6 individual sequence diagram is [`diagrams/Luma-registration-sequence.drawio`](diagrams/Luma-registration-sequence.drawio), also available as an SVG preview.
+Luma's personal Event Ticketing ERD is in the [Week 1 repository](https://github.com/Software-Dev-Tools-Gr-10/cef345--week1/tree/main/Luma%20cef345week1). The [registration sequence diagram](diagrams/Luma-registration-sequence.drawio.svg) is also available as an SVG.
 
 ## 1. Preliminary design
 
 ### Architecture choice
+
+![System architecture](diagrams/architecture.drawio.svg)
 
 The system will use a browser-based client and a client-server monolith with layered server responsibilities. Attendees, organizers, check-in staff and the system administrator use responsive browser screens. The browser sends requests to one application server, which applies role checks and event rules before reading or changing data through a repository layer. The database stores event, registration, ticket, payment and attendance records.
 
@@ -40,6 +42,8 @@ flowchart LR
 
 ### Deployment view
 
+![Deployment diagram](diagrams/deployment.drawio.svg)
+
 For development and the course demonstration, the application server and database can run on one group member's computer. Other phones or computers can open the system through a browser on the same network. The production host and database engine are not specified in the confirmed SRS, so those remain deployment choices for the group.
 
 ```mermaid
@@ -61,6 +65,8 @@ flowchart LR
 ```
 
 ### Data model
+
+![Entity relationship diagram](diagrams/er.drawio.svg)
 
 The proposed relational model keeps registrations and attendance history tied to events and attendees. A ticket belongs to one registration, and one registration can have at most one check-in. Payment records are separate so the system can retain the amount, method and recorded date required by FR-09. Contact values are normalized before checking for a duplicate registration as described in FR-05.
 
