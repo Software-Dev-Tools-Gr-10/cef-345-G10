@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Event Ticketing and Check-in System architecture</title>
+  <desc id="desc">A browser client communicates with a layered application server through HTTP for a local demonstration or HTTPS when hosted. The server accesses a relational database.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#40566f"/></marker>
+    <style>
+      .title{font:700 28px Arial,sans-serif;fill:#13243a}.subtitle{font:15px Arial,sans-serif;fill:#53657a}
+      .section{font:700 18px Arial,sans-serif;fill:#13243a}.label{font:700 16px Arial,sans-serif;fill:#17324f}
+      .body{font:14px Arial,sans-serif;fill:#33465d}.small{font:13px Arial,sans-serif;fill:#51647a}
+      .box{rx:12;stroke-width:2}.line{stroke:#40566f;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .dash{stroke-dasharray:8 7}
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#f5f8fc"/>
+  <text x="48" y="52" class="title">Event Ticketing and Check-in System</text>
+  <text x="48" y="80" class="subtitle">Preliminary architecture · browser client · layered application server · relational data store</text>
+
+  <rect x="48" y="126" width="300" height="492" rx="18" fill="#eef6ff" stroke="#92b8e2" stroke-width="2"/>
+  <text x="74" y="163" class="section">Browser client</text>
+  <text x="74" y="190" class="small">Phone or computer · responsive screens</text>
+  <rect class="box" x="82" y="226" width="232" height="78" fill="#ffffff" stroke="#7da8d7"/>
+  <text x="198" y="258" text-anchor="middle" class="label">Attendee screens</text>
+  <text x="198" y="282" text-anchor="middle" class="body">Browse · register · view ticket</text>
+  <rect class="box" x="82" y="326" width="232" height="88" fill="#ffffff" stroke="#7da8d7"/>
+  <text x="198" y="359" text-anchor="middle" class="label">Organizer screens</text>
+  <text x="198" y="383" text-anchor="middle" class="body">Events · payments · reports</text>
+  <rect class="box" x="82" y="436" width="232" height="78" fill="#ffffff" stroke="#7da8d7"/>
+  <text x="198" y="468" text-anchor="middle" class="label">Check-in and admin screens</text>
+  <text x="198" y="492" text-anchor="middle" class="body">Ticket check · role access</text>
+  <rect class="box" x="82" y="540" width="232" height="52" fill="#dcecff" stroke="#7da8d7"/>
+  <text x="198" y="572" text-anchor="middle" class="label">API request client</text>
+
+  <rect x="406" y="126" width="488" height="492" rx="18" fill="#f0fbf8" stroke="#73b6a5" stroke-width="2"/>
+  <text x="432" y="163" class="section">Application server · one deployment</text>
+  <text x="432" y="190" class="small">Enforces roles, validates input and applies the SRS rules</text>
+  <rect class="box" x="466" y="226" width="368" height="62" fill="#ffffff" stroke="#78b7a8"/>
+  <text x="650" y="264" text-anchor="middle" class="label">Routes</text>
+  <text x="650" y="282" text-anchor="middle" class="small">Map HTTP method and URL to a controller</text>
+  <rect class="box" x="466" y="315" width="368" height="70" fill="#ffffff" stroke="#78b7a8"/>
+  <text x="650" y="345" text-anchor="middle" class="label">Controllers</text>
+  <text x="650" y="369" text-anchor="middle" class="body">Validate request · enforce access · return status and JSON</text>
+  <rect class="box" x="466" y="412" width="368" height="84" fill="#ffffff" stroke="#78b7a8"/>
+  <text x="650" y="446" text-anchor="middle" class="label">Services</text>
+  <text x="650" y="471" text-anchor="middle" class="body">Event · registration · check-in · payment · report rules</text>
+  <rect class="box" x="466" y="523" width="368" height="62" fill="#ffffff" stroke="#78b7a8"/>
+  <text x="650" y="558" text-anchor="middle" class="label">Repositories · database queries</text>
+
+  <rect x="948" y="226" width="208" height="260" rx="18" fill="#fff8eb" stroke="#e6b862" stroke-width="2"/>
+  <text x="1052" y="264" text-anchor="middle" class="section">Data store</text>
+  <ellipse cx="1052" cy="330" rx="72" ry="27" fill="#ffffff" stroke="#d2a142" stroke-width="2"/>
+  <path d="M980 330v95c0 15 32 27 72 27s72-12 72-27v-95" fill="#ffffff" stroke="#d2a142" stroke-width="2"/>
+  <path d="M980 378c0 15 32 27 72 27s72-12 72-27" fill="none" stroke="#d2a142" stroke-width="2"/>
+  <text x="1052" y="338" text-anchor="middle" class="label">Relational DB</text>
+  <text x="1052" y="462" text-anchor="middle" class="body">Events · registrations</text>
+  <text x="1052" y="482" text-anchor="middle" class="body">tickets · payments · check-ins</text>
+
+  <path class="line" d="M314 566 C365 566 392 257 466 257"/>
+  <text x="360" y="380" text-anchor="middle" class="small" transform="rotate(-72 360 380)">JSON API (HTTP local / HTTPS hosted)</text>
+  <path class="line" d="M650 288 L650 315"/>
+  <path class="line" d="M650 385 L650 412"/>
+  <path class="line" d="M650 496 L650 523"/>
+  <path class="line" d="M834 554 L948 392"/>
+  <text x="892" y="464" text-anchor="middle" class="small" transform="rotate(-55 892 464)">SQL queries</text>
+
+  <rect x="48" y="660" width="1108" height="54" rx="12" fill="#e9eef5"/>
+  <text x="74" y="693" class="body">Design note: the SRS requires internet-connected check-in for this version; offline validation is out of scope. Hosting and database engine remain group implementation choices.</text>
+</svg>
