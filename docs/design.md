@@ -9,7 +9,7 @@ Status: Group design draft based on the confirmed SRS
 
 This document turns the confirmed requirements in [`srs.md`](srs.md) into a design the group can build and review. The diagrams below use Mermaid so they can be viewed in GitHub and edited as text. The architecture diagram is also provided as an SVG at [`diagrams/architecture.drawio.svg`](diagrams/architecture.drawio.svg).
 
-Luma's personal Event Ticketing ERD is in the [Week 1 repository](https://github.com/Software-Dev-Tools-Gr-10/cef345--week1/tree/main/Luma%20cef345week1). The [registration sequence diagram](diagrams/Luma-registration-sequence.drawio.svg) is also available as an SVG.
+Luma's personal Event Ticketing ERD is in the [Week 1 repository](https://github.com/Software-Dev-Tools-Gr-10/cef345--week1/tree/main/Luma%20cef345week1). The [registration sequence diagram](https://github.com/Software-Dev-Tools-Gr-10/cef345--week1/blob/main/Luma%20cef345week1/Luma-registration-sequence.drawio.svg) is also available as an SVG.
 
 ## 1. Preliminary design
 
