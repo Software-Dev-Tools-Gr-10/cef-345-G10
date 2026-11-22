@@ -9,6 +9,8 @@ Status: Group design draft based on the confirmed SRS
 
 This document turns the confirmed requirements in [`srs.md`](srs.md) into a design the group can build and review. The diagrams below use Mermaid so they can be viewed in GitHub and edited as text. The architecture diagram is also provided as an SVG at [`diagrams/architecture.drawio.svg`](diagrams/architecture.drawio.svg).
 
+Luma's Week 5 individual deliverables are [`schema.sql`](../schema.sql) and an editable ERD at [`diagrams/Luma-event-ticketing-erd.drawio`](diagrams/Luma-event-ticketing-erd.drawio) with its SVG preview. The Week 6 individual sequence diagram is [`diagrams/Luma-registration-sequence.drawio`](diagrams/Luma-registration-sequence.drawio), also available as an SVG preview.
+
 ## 1. Preliminary design
 
 ### Architecture choice
