@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Event Ticketing and Check-in deployment view</title>
+  <desc id="desc">Phone and computer browsers connect over a local network to one demo application host and its database. An optional hosted deployment is shown separately.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#40566f"/></marker><style>
+    .bg{fill:#f5f8fc}.title{font:700 25px Arial;fill:#13243a}.section{font:700 17px Arial;fill:#17324f}.body{font:14px Arial;fill:#33465d}.small{font:13px Arial;fill:#52657a}.box{stroke-width:2;rx:12}.line{fill:none;stroke:#40566f;stroke-width:2.5;marker-end:url(#arrow)}.dash{fill:none;stroke:#7b639a;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#arrow)}
+  </style></defs>
+  <rect class="bg" width="1200" height="680"/><text x="45" y="48" class="title">Event Ticketing and Check-in System · Deployment View</text>
+  <rect class="box" x="45" y="115" width="245" height="350" fill="#eef6ff" stroke="#92b8e2"/><text x="70" y="151" class="section">User devices</text><text x="70" y="178" class="small">Attendee · organizer · check-in staff · admin</text>
+  <rect class="box" x="75" y="220" width="185" height="145" fill="#fff" stroke="#7da8d7"/><text x="167" y="255" text-anchor="middle" class="section">Phone or computer</text><text x="167" y="285" text-anchor="middle" class="body">Web browser</text><text x="167" y="313" text-anchor="middle" class="small">Responsive client screens</text>
+  <rect class="box" x="370" y="115" width="355" height="350" fill="#f0fbf8" stroke="#73b6a5"/><text x="395" y="151" class="section">Course demo host</text><text x="395" y="178" class="small">One group member's computer</text>
+  <rect class="box" x="410" y="220" width="275" height="85" fill="#fff" stroke="#78b7a8"/><text x="547" y="250" text-anchor="middle" class="section">Application server</text><text x="547" y="277" text-anchor="middle" class="small">Routes · controllers · services · repositories</text>
+  <path d="M460 342 C460 365 635 365 635 342" fill="none" stroke="#d2a142" stroke-width="2"/><path d="M460 342v68c0 15 39 27 87 27s88-12 88-27v-68" fill="#fff8eb" stroke="#d2a142" stroke-width="2"/><path d="M460 375c0 15 39 27 87 27s88-12 88-27" fill="none" stroke="#d2a142" stroke-width="2"/><text x="547" y="373" text-anchor="middle" class="section">Relational database</text><text x="547" y="423" text-anchor="middle" class="small">Events · registrations · tickets</text><text x="547" y="442" text-anchor="middle" class="small">Payments · check-ins · updates</text>
+  <rect class="box" x="820" y="115" width="330" height="350" fill="#f5f0fb" stroke="#a995c9"/><text x="845" y="151" class="section">Optional later hosting</text><text x="845" y="178" class="small">If the group selects a production host</text>
+  <rect class="box" x="865" y="220" width="240" height="72" fill="#fff" stroke="#a995c9"/><text x="985" y="263" text-anchor="middle" class="section">Hosted application server</text>
+  <path d="M910 342 C910 365 1060 365 1060 342" fill="none" stroke="#d2a142" stroke-width="2"/><path d="M910 342v55c0 14 34 24 75 24s75-10 75-24v-55" fill="#fff8eb" stroke="#d2a142" stroke-width="2"/><text x="985" y="375" text-anchor="middle" class="section">Hosted database</text>
+  <path class="line" d="M260 282 H410"/><text x="335" y="270" text-anchor="middle" class="small">HTTP on local network</text>
+  <path class="line" d="M547 305 V342"/><text x="610" y="329" class="small">Database connection</text>
+  <path class="dash" d="M260 332 C440 505 760 505 865 282"/><text x="610" y="493" text-anchor="middle" class="small">HTTPS when hosted</text>
+  <path class="dash" d="M985 292 V342"/>
+  <rect class="box" x="45" y="555" width="1105" height="70" fill="#e9eef5" stroke="#aab7c4"/><text x="70" y="585" class="body">Offline check-in is out of scope. Production hosting and database engine remain group decisions.</text><text x="70" y="609" class="small">For the course demo, the server and database can run on one computer; connected devices use the same local network.</text>
+</svg>
