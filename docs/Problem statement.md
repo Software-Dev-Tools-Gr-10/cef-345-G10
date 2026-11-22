@@ -11,4 +11,3 @@ Churches and student associations often organise events, but may face difficulti
 3. Ticket payment records may not clearly show who has paid, who has not and how much money was collected.
 4. Tickets may not be checked consistently at the entrance, allowing reuse and making attendance counts unreliable.
 5. Organisers may struggle to notify attendees about event changes and to produce reliable reports on past events.
-
