@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">Event Ticketing and Check-in System architecture</title>
-  <desc id="desc">A browser client communicates through an HTTPS JSON API with a layered application server, which accesses a relational database.</desc>
+  <desc id="desc">A browser client communicates with a layered application server through HTTP for a local demonstration or HTTPS when hosted. The server accesses a relational database.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#40566f"/></marker>
     <style>
@@ -55,7 +55,7 @@
   <text x="1052" y="482" text-anchor="middle" class="body">tickets · payments · check-ins</text>
 
   <path class="line" d="M314 566 C365 566 392 257 466 257"/>
-  <text x="360" y="380" text-anchor="middle" class="small" transform="rotate(-72 360 380)">HTTPS JSON API</text>
+  <text x="360" y="380" text-anchor="middle" class="small" transform="rotate(-72 360 380)">JSON API (HTTP local / HTTPS hosted)</text>
   <path class="line" d="M650 288 L650 315"/>
   <path class="line" d="M650 385 L650 412"/>
   <path class="line" d="M650 496 L650 523"/>

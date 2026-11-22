@@ -34,7 +34,7 @@ flowchart LR
     Routes --> Controllers --> Services --> Repos
   end
   DB[(Relational database)]
-  APIClient <-->|HTTPS JSON API| Routes
+  APIClient <-->|JSON API: HTTP locally, HTTPS when hosted| Routes
   Repos --> DB
 ```
 
@@ -176,7 +176,7 @@ All successful endpoints return JSON. Errors use one shape: `{"error":"ERROR_COD
 | `POST /api/registrations/:registrationId/payments` | Record an amount, method and date for payment | `201` | `400`, `403`, `404` | FR-09 |
 | `POST /api/events/:eventId/check-ins` | Validate a ticket and record check-in | `201` | `400` missing ID, `403`, `404`, `409` invalid/wrong event/already checked in | FR-10, FR-11, FR-12 |
 | `POST /api/events/:eventId/updates` | Publish an event update | `201` | `400`, `403`, `404` | FR-13 |
-| `GET /api/events/:eventId/updates` | View updates for the selected event | `200` | `404` | FR-13 |
+| `GET /api/tickets/:ticketIdentifier/updates` | View updates for the event linked to a valid ticket | `200` | `404` invalid ticket | FR-13 |
 | `GET /api/events/:eventId/report` | Return registration, paid, amount-paid and checked-in totals | `200` | `403`, `404` | FR-14 |
 | `PUT /api/admin/users/:userId/roles` | Assign or remove Organizer and Check-in staff roles | `200` | `400`, `403`, `404` | FR-15 |
 | `GET /api/events/:eventId/report.csv` | Export attendee and attendance report | `200` | `403`, `404` | FR-16 |
@@ -231,7 +231,7 @@ If capacity is full or the contact has already registered, return `409 Conflict`
 | FR-10 | `POST /api/events/:eventId/check-ins` | `events`, `tickets`, `registrations` |
 | FR-11 | `POST /api/events/:eventId/check-ins` | `events`, `tickets`, `registrations`, `check_ins` |
 | FR-12 | `POST /api/events/:eventId/check-ins` | `check_ins`, `users` |
-| FR-13 | `POST /api/events/:eventId/updates`, `GET /api/events/:eventId/updates` | `events`, `event_updates`, `registrations` |
+| FR-13 | `POST /api/events/:eventId/updates`, `GET /api/tickets/:ticketIdentifier/updates` | `events`, `event_updates`, `registrations`, `tickets` |
 | FR-14 | `GET /api/events/:eventId/report` | `events`, `registrations`, `payments`, `check_ins` |
 | FR-15 | `PUT /api/admin/users/:userId/roles` | `users`, `roles`, `user_roles` |
 | FR-16 | `GET /api/events/:eventId/report.csv` | `events`, `registrations`, `tickets`, `payments`, `check_ins` |
@@ -540,7 +540,7 @@ These are low-fidelity screen layouts. They use only the information and actions
 
 ### Pseudocode: register attendee and issue ticket
 
-The registration operation must not exceed event capacity or issue two tickets for the same event/contact. The service performs the state checks and inserts in one transaction. A database uniqueness constraint on `(event_id, normalized_contact)` is the final guard against simultaneous duplicate submissions.
+The registration operation must not exceed event capacity or issue two tickets for the same event/contact. The service performs the state checks and inserts in one transaction. A database uniqueness constraint on `(event_id, normalized_contact)` is the final guard against simultaneous duplicate submissions. Since the database engine is still a group choice, `findByIdForUpdate` below means the implementation must lock or otherwise serialize capacity updates using the chosen engine's supported approach.
 
 ```text
 function registerAttendee(eventId, name, contact):
@@ -571,6 +571,9 @@ function registerAttendee(eventId, name, contact):
         )
         commit transaction
         return registration with ticketIdentifier
+    catch UniqueConstraintError for (eventId, normalizedContact):
+        rollback transaction
+        throw ConflictError("This contact is already registered")
     catch any error:
         rollback transaction
         rethrow error
@@ -580,7 +583,7 @@ function registerAttendee(eventId, name, contact):
 
 - Every functional requirement FR-01 through FR-16 maps to at least one endpoint and the data it uses in the traceability table.
 - Protected endpoints require the relevant role; public event browsing and registration are available without staff roles.
-- Registration refuses closed, late, full and duplicate requests without leaving partial records.
+- Registration refuses closed, late, full and duplicate requests without leaving partial records; capacity checks are serialized so concurrent requests cannot exceed the event limit.
 - Each successful registration creates one ticket; each registration can have no more than one successful check-in.
 - API errors explain invalid input, missing records, forbidden actions and conflicts.
 - The three main sequences show an alternative path, and the registration sequence includes the transaction boundary.
